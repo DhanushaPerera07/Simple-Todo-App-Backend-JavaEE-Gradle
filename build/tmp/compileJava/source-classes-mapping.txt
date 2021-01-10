@@ -1,2 +1,0 @@
-lk/ijse/dep/web/HelloServlet.java
- lk.ijse.dep.web.HelloServlet

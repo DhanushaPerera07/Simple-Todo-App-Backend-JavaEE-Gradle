@@ -11,13 +11,13 @@ import java.io.IOException;
  * @author : Dhanusha Perera
  * @since : 10/01/2021
  **/
-@WebServlet(name = "UserServlet", urlPatterns = "/user")
+@WebServlet(name = "UserServlet", urlPatterns = "/users")
 public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.getWriter().println("<h1>User Servlet is working fine!</h1>");
     }
 }
