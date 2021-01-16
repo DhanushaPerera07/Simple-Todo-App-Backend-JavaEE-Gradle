@@ -6,6 +6,7 @@ package lk.ijse.dep.web.listener;
  **/
 
 import lk.ijse.dep.web.commonConstant.CommonConstant;
+import lk.ijse.dep.web.util.AppUtil;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.servlet.ServletContext;
@@ -32,10 +33,10 @@ public class MyContextListener implements ServletContextListener {
 //        System.out.println("Context is being initialized");
 
         BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setUsername(CommonConstant.MYSQL_USER_NAME);
-        basicDataSource.setPassword(CommonConstant.MYSQL_PASSWORD);
-        basicDataSource.setUrl(CommonConstant.MYSQL_URL);
-        basicDataSource.setDriverClassName(CommonConstant.MYSQL_DRIVER_CLASS_NAME);
+        basicDataSource.setUsername(AppUtil.getValueByKey("mysql.username"));
+        basicDataSource.setPassword(AppUtil.getValueByKey("mysql.password"));
+        basicDataSource.setUrl(AppUtil.getValueByKey("mysql.url"));
+        basicDataSource.setDriverClassName(AppUtil.getValueByKey("mysql.driver.class"));
         basicDataSource.setInitialSize(5);
         basicDataSource.setMaxTotal(5);
         ServletContext ctx = sce.getServletContext();
