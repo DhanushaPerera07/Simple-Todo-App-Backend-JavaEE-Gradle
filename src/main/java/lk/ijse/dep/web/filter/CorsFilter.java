@@ -2,7 +2,8 @@ package lk.ijse.dep.web.filter;
 
 import lk.ijse.dep.web.commonConstant.CommonConstant;
 
-import javax.servlet.*;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +27,7 @@ public class CorsFilter extends HttpFilter { // in other words, HttpFilter class
         We do not have to cast the resp object */
         resp.setHeader("Access-Control-Allow-Origin", CommonConstant.FRONTEND_URL);
         resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
-        resp.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
+        resp.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
         chain.doFilter(req, resp); // in this line; go to the next filter in the filter chain
     }
 

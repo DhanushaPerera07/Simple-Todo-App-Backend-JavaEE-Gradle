@@ -12,14 +12,10 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpSessionAttributeListener;
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
-import javax.servlet.http.HttpSessionBindingEvent;
 import java.sql.SQLException;
 
 @WebListener()
-public class MyContextListener implements ServletContextListener{
+public class MyContextListener implements ServletContextListener {
 
     // Public constructor is required by servlet spec
     public MyContextListener() {
@@ -35,14 +31,15 @@ public class MyContextListener implements ServletContextListener{
       */
 //        System.out.println("Context is being initialized");
 
-        BasicDataSource bds = new BasicDataSource();
-        bds.setUsername(CommonConstant.MYSQL_USER_NAME);
-        bds.setPassword(CommonConstant.MYSQL_PASSWORD);
-        bds.setUrl(CommonConstant.MYSQL_URL);
-        bds.setInitialSize(5);
-        bds.setMaxTotal(5);
+        BasicDataSource basicDataSource = new BasicDataSource();
+        basicDataSource.setUsername(CommonConstant.MYSQL_USER_NAME);
+        basicDataSource.setPassword(CommonConstant.MYSQL_PASSWORD);
+        basicDataSource.setUrl(CommonConstant.MYSQL_URL);
+        basicDataSource.setDriverClassName(CommonConstant.MYSQL_DRIVER_CLASS_NAME);
+        basicDataSource.setInitialSize(5);
+        basicDataSource.setMaxTotal(5);
         ServletContext ctx = sce.getServletContext();
-        ctx.setAttribute("cp",bds);
+        ctx.setAttribute("cp", basicDataSource);
     }
 
     public void contextDestroyed(ServletContextEvent sce) {
