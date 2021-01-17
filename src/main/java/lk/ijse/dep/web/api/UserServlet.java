@@ -97,7 +97,7 @@ public class UserServlet extends HttpServlet {
             exception.printStackTrace();
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
-    }
+    }// doGet
 
     @Override /* WORKS FINE */
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -280,7 +280,7 @@ public class UserServlet extends HttpServlet {
             }
         }
 
-    }
+    } // doDelete
 
     /**
      * This method will check given username is already in the database
