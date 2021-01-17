@@ -251,8 +251,6 @@ public class UserServlet extends HttpServlet {
     @Override /* WORKING FINE */
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
-        System.out.println("-----------------------------------");
-        System.out.println(name);
         if (name == null) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
             return;
@@ -267,11 +265,11 @@ public class UserServlet extends HttpServlet {
                 }
 
                 PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM `user` WHERE `name`=?;");
-                preparedStatement.setString(1,name);
+                preparedStatement.setString(1, name);
 
-                if (preparedStatement.executeUpdate()>0){
+                if (preparedStatement.executeUpdate() > 0) {
                     resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
-                }else {
+                } else {
                     resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
                 }
 
